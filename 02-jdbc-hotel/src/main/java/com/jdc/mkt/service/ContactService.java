@@ -2,6 +2,8 @@ package com.jdc.mkt.service;
 
 import static com.jdc.mkt.utils.MyConnection.getConnection;
 
+import java.util.List;
+
 import com.jdc.mkt.entity.Contact;
 
 public class ContactService implements CrudOperation<Contact>{
@@ -61,8 +63,7 @@ public class ContactService implements CrudOperation<Contact>{
 	}
 
 	@Override
-	public Contact select(Contact t) {
-		// TODO Auto-generated method stub
+	public List<Contact> select(Contact t) {
 		return null;
 	}
 
