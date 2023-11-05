@@ -18,6 +18,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import javax.persistence.CollectionTable;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.MapKeyEnumerated;
 import javax.persistence.OrderBy;
@@ -25,6 +27,7 @@ import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.persistence.Enumerated;
 import static javax.persistence.EnumType.STRING;
+import javax.persistence.JoinTable;
 
 @Entity
 @Getter
@@ -47,6 +50,7 @@ public class Student implements Serializable{
 	@OrderColumn(name = "hobby")
 	@Enumerated(STRING)
 	private List<Gender> hobbies;
+	
 	@ElementCollection
 	@CollectionTable(name = "student_grade_tbl",
 	joinColumns = @JoinColumn(name="student_id",referencedColumnName = "id") )
@@ -55,13 +59,22 @@ public class Student implements Serializable{
 	//@OrderBy("grade_type asc")
 	@OrderColumn(name = "hobby")
 	private Map<Gender, String> grade ;
+	
 	@ElementCollection
 	@CollectionTable(name = "student_register_tbl",
 	joinColumns = @JoinColumn(name="student",referencedColumnName = "id") )
 	//@OrderBy("student desc")
 	@OrderColumn(name = "hobby")
 	private Set<RegisterPk> register;
-	//private Parent parentId;
+	
+	@ManyToMany(mappedBy = "students")
+	private List<Parent> parents;
+	@ManyToOne
+//	@JoinTable(name = "student_room_tbl",
+//	joinColumns = @JoinColumn(name = "student_id",referencedColumnName = "id"),
+//	inverseJoinColumns = @JoinColumn(name ="room_id",referencedColumnName = "id"))
+	private ClassRoom room;
+	
 
 }
 
