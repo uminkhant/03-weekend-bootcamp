@@ -30,5 +30,5 @@ public class Parent implements Serializable{
 	private String name;
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
-	//private Contact contact;
+	private Contact contact;
 }
