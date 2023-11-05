@@ -13,7 +13,7 @@ import javax.persistence.Temporal;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+//@Entity
 @Getter
 @Setter
 @IdClass(ProductDetailsPk.class)
