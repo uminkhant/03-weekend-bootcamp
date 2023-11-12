@@ -1,5 +1,7 @@
 package com.jdc.mkt.test;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,10 +26,11 @@ public class AccountTest extends JpaFactory{
 		address.setId(addressId);
 		parent.setAddress(address);
 		
-		var contact1 = new Contact("aungaung@gmail.com","0942342323");
-		var contact2 = new Contact("aungaung11@gmail.com","092342322");
+		var contact1 = new Contact("aungaung@gmail.com",42342323);
+		var contact2 = new Contact("aungaung11@gmail.com",2342322);
 		parent.setPrimaryContact(contact1);
 		parent.setSecondaryontact(contact2);
+		
 		
 //		var teacher = new Teacher();
 //		teacher.setLoginId(loginId);

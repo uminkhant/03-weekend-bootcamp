@@ -2,7 +2,10 @@ package com.jdc.mkt.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Convert;
 import javax.persistence.Embeddable;
+
+import com.jdc.mkt.convert.PhoneConverter;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -23,5 +26,6 @@ public class Contact implements Serializable{
 	@NonNull
 	private String email;
 	@NonNull
-	private String phone;
+	@Convert(converter = PhoneConverter.class)
+	private Integer phone;
 }

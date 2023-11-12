@@ -14,7 +14,7 @@ public class ParentTest extends JpaFactory{
 		"U SanNaung,sannaung@gamil.com,099223232",
 		"Daw Thida,thida@gmail.com,099882342"
 		})
-	void insertParent(String name,String email,String phone) {
+	void insertParent(String name,String email,int phone) {
 		
 		var em =  emf.createEntityManager();
 		em.getTransaction().begin();
