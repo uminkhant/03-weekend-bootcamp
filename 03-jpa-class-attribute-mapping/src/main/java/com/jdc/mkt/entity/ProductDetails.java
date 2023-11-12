@@ -4,7 +4,6 @@ import static javax.persistence.TemporalType.TIME;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.ManyToOne;

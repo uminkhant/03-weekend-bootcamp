@@ -1,10 +1,7 @@
 package com.jdc.mkt.entity;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 
 import lombok.EqualsAndHashCode;

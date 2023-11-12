@@ -8,9 +8,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import com.jdc.mkt.entity.Address;
 import com.jdc.mkt.entity.Contact;
-import com.jdc.mkt.service.AddressService;
 import com.jdc.mkt.service.ContactService;
 import com.jdc.mkt.service.CrudOperation;
 

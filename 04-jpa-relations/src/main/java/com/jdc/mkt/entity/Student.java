@@ -22,12 +22,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.MapKeyEnumerated;
-import javax.persistence.OrderBy;
 import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.persistence.Enumerated;
 import static javax.persistence.EnumType.STRING;
-import javax.persistence.JoinTable;
 
 @Entity
 @Getter
