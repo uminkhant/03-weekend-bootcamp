@@ -1,0 +1,59 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:util="http://www.springframework.org/schema/util"
+xmlns:p="http://www.springframework.org/schema/p"
+xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+">
+
+	<context:property-placeholder location="/database.properties"/>
+	<context:component-scan base-package="com.jdc.mkt.repo"/>
+	<jdbc:embedded-database id="dataSource" type="HSQL"></jdbc:embedded-database>
+	
+	<!-- <bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource">
+		<property name="jdbcUrl" value="${db.url}"></property>
+		<property name="username" value="${db.user}"></property>
+		<property name="password" value="${db.pass}"></property>
+	</bean> -->
+	
+	<bean id="jpaVendorAdpter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+	
+	<bean id="entityManagerFactory" 
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:jpaVendorAdapter-ref="jpaVendorAdpter"
+		p:packagesToScan="com.jdc.mkt.entity">
+	
+		<property name="JpaProperties">
+		
+		<util:properties>
+			<prop key="hibernate.hbm2ddl.auto">drop-and-create</prop>
+			<prop key="hibernate.show_sql">true</prop>
+			<prop key="hibernate.format_sql">true</prop>
+		</util:properties>
+		
+			<!-- <util:map>
+				<entry key="hibernate.hbm2ddl.auto" value="drop-and-create"></entry>
+				<entry key="hibernate.show_sql" value="true"></entry>
+				<entry key="hibernate.format_sql" value="true"></entry>
+			</util:map> -->
+		</property>
+	</bean>
+	
+	<bean id="tx" class="org.springframework.orm.jpa.JpaTransactionManager"
+	p:entityManagerFactory-ref="entityManagerFactory"></bean>
+	
+	<tx:annotation-driven transaction-manager="tx"/>
+	
+	
+	
+
+</beans>
