@@ -10,6 +10,7 @@
 		<spring-version>6.1.1</spring-version>
 		<hibernate-version>6.4.0.Final</hibernate-version>
 		<lombok-version>1.18.30</lombok-version>
+		<mysql-version>8.1.0</mysql-version>
 		<h2-version>2.2.224</h2-version>
 		<junit-version>5.10.0</junit-version>
 	</properties>
@@ -35,6 +36,12 @@
 			<artifactId>h2</artifactId>
 			<version>${h2-version}</version>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>${mysql-version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
