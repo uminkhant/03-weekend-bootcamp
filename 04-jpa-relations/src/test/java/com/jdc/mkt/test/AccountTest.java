@@ -23,5 +23,7 @@ public class AccountTest {
 	}
 	
 	@Test
-	void test() {}
+	void test() {
+		
+	}
 }
