@@ -7,6 +7,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import com.jdc.mkt.entity.CourseFees;
+
 public class HibernateFactory {
 
 	
@@ -25,6 +27,7 @@ public class HibernateFactory {
 	
 	@Test
 	void test() {
-		
+		var em = emf.createEntityManager();
+		em.find(CourseFees.class, 1);
 	}
 }

@@ -8,11 +8,19 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import jakarta.persistence.NamedQuery;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@NamedQuery(
+	name = "Customer.findAllByCityNam",
+	query = "select c from Customer c where c.address.city = :city")
 public class Customer {
 
 	@Id

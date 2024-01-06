@@ -20,7 +20,7 @@ public class CourseFees {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private int fees;
-	@OneToOne
+	@OneToOne()
 	private Course course;
 	
 }

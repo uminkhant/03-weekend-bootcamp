@@ -8,10 +8,16 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import jakarta.persistence.NamedQuery;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
+@NamedQuery(
+	name="Product.findByCategoryAndDtPrice",
+	query = "select p from Product p where p.category.name = :category and p.dtPrice between :low and :high")
 public class Product {
 
 	@Id

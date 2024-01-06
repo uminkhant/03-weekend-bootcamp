@@ -1,6 +1,7 @@
 package com.jdc.mkt.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.hibernate.annotations.ColumnDefault;
 
@@ -10,6 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -25,4 +27,6 @@ public class Sales {
 	private Customer customer;
 	@Column(name="sale_date")
 	private LocalDate saleDate;
+	@OneToMany(mappedBy = "sales")
+	private List<SaleDetails>saleDetails;
 }
