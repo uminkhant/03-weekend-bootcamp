@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 
 public interface ProductDtoInt {
 
-	//String getName();
-	//int getDtPrice();
+	String getName();
+	int getDtPrice();
 	
 	@Value("#{target.name+ ' ' +target.dtPrice}")
 	String getDisplayName();

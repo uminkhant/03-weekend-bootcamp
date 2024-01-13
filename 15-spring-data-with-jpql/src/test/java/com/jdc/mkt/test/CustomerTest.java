@@ -31,9 +31,16 @@ public class CustomerTest {
 	
 	//test native query
 	@Test
+	@Disabled
 	void findNativeByTownshipId() {
 		var customer = repo.findByNativeCustomerTownshipId(1);
 		System.out.println(customer.getName());
+	}
+	
+	@Test
+	void findNameAndEmailWithNativequery() {
+		var list = repo.findNameAndEmailWithNativequery("a".concat("%"));
+		list.forEach(c -> System.out.println(c.name()+"\t"+c.email()+"\t"+c.township()));
 	}
 	
 	
