@@ -18,10 +18,12 @@ public interface ProductRepo extends JpaRepository<Product, Integer>{
 	//name query
 	List<Product> findByCategoryAndDtPrice(@Param("category") String category,@Param("low") int lowPrice,@Param("high") int highPrice);
 	
-	//query
+	//query with projection interface
 	@Query("select p.name name,p.dtPrice dtPrice from Product p")
 	List<ProductDtoInt> findProducts();
 	
 	@Query("select p.category category,p.name product ,p.dtPrice price from Product p where p.category.name = :cat")
 	List<ProductNameAndPriceDtoInt> findProductByCategory(@Param("cat") String cat);
+	
+	
 }

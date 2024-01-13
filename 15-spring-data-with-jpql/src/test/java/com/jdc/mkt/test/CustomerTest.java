@@ -20,13 +20,23 @@ public class CustomerTest {
 		var list = repo.findAllByCity("Mandalay");
 		System.out.println("Size :"+list.size());
 		list.forEach(c -> System.out.println( c.getName()));
-	}
-	
+	}	
 	@Test
+	@Disabled
 	void findAllByCityNameAndTownship() {
 		var list = repo.findAllByCityAndTownship("Mandalay","Maharaungmyay");
 		System.out.println("Size :"+list.size());
 		list.forEach(c -> System.out.println( c.getName()));
 	}
+	
+	//test native query
+	@Test
+	void findNativeByTownshipId() {
+		var customer = repo.findByNativeCustomerTownshipId(1);
+		System.out.println(customer.getName());
+	}
+	
+	
+	
 	
 }

@@ -20,7 +20,7 @@ public class SaleTest {
 	SaleDetailsRepo detailsRepo;
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void findSaleProductAndQtyByCustomer() {
 		var list = saleRepo.findProductAndQtysByCustomer("Andrew");
 		System.out.println("Size :"+list.size());
@@ -35,10 +35,10 @@ public class SaleTest {
 		list.forEach(p -> System.out.println(p.name()+"\t\t\t"+p.price()+"\t"+p.qty()+"\t"+p.total()));
 	}
 	
-	@Test
+	//@Test
 	void findProductNamePriceQtyAndTotalByDateWithInt() {
 		var list = detailsRepo.findProductNamePriceQtyAndTotalByDateWitInt(LocalDate.of(2023, 05, 12));
 		System.out.println(list.size());
-		list.forEach(p -> System.out.println(p.getProduct().getName()+"\t"+p.getProduct().getDtPrice()+"\t"+p.getQty()+"\t"+p.getTotal()));
+		//list.forEach(p -> System.out.println(p.getProduct().getName()+"\t"+p.getProduct().getDtPrice()+"\t"+p.getQty()+"\t"+p.getTotal()));
 	}
 }

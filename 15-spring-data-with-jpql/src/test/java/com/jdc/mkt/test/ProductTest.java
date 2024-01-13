@@ -26,13 +26,14 @@ public class ProductTest {
 	}
 	
 	@Test
-	@Disabled
+	//@Disabled
 	void findProduct() {
 		var list = repo.findProducts();
-		list.forEach(p -> System.out.println( p.getName()+"\t"+p.getDtPrice()));
+		list.forEach(p -> p.getProduct());
 	}
 	
 	@Test
+	@Disabled
 	void findProductWithCategory() {
 		var list = repo.findProductByCategory("Diary");
 		list.forEach(p -> System.out.println(p.getCategory().getName()+"\t"+p.getProduct()+"\t"+p.getPrice()));

@@ -13,6 +13,9 @@ public interface CustomerRepo extends JpaRepository<Customer, Integer>{
 	@Query(name = "Customer.findAllByCityNam")
 	List<Customer> findAllByCity(@Param("city") String city);
 	
+	@Query(nativeQuery = true)
+	Customer findByNativeCustomerTownshipId(int addressId);
+	
 	@Query("select c from Customer c where c.address.city = :city and c.address.township = :town" )
 	List<Customer> findAllByCityAndTownship(@Param("city")String  city,@Param("town") String township);
 }
