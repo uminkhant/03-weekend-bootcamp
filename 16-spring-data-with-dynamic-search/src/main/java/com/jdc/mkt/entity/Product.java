@@ -26,7 +26,7 @@ public class Product {
 	@Column(name="ws_price")
 	private Integer wsPrice;
 	@ColumnDefault("true")
-	private boolean active;
+	private Boolean active;
 	@ManyToOne
 	private Category category;
 }

@@ -3,6 +3,8 @@ package com.jdc.mkt.repo;
 import java.util.HashMap;
 import java.util.List;
 
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 import org.springframework.util.StringUtils;
 
 import com.jdc.mkt.entity.Product;
@@ -16,7 +18,7 @@ public class ProductSearchRepoDefault implements ProductSearchRepo{
 	private EntityManager em;
 	
 	@Override
-	public List<Product> search(String cName, String pName, Integer sPrice, Integer ePrice) {
+	public List<Product> search( String cName, String pName, Integer sPrice, Integer ePrice) {
 		
 		var sb = new StringBuilder("select p from Product p where 1 = 1");
 		var map = new HashMap<String, Object>();
@@ -27,7 +29,7 @@ public class ProductSearchRepoDefault implements ProductSearchRepo{
 		}
 		if(StringUtils.hasLength(pName)) {
 			sb.append(" and p.name = :pName");
-			map.put("pName", cName);
+			map.put("pName", pName);
 		}
 		
 		if(null != sPrice && sPrice > 0) {

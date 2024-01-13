@@ -15,9 +15,17 @@ public class ProductTest {
 	ProductRepo repo;
 	
 	@ParameterizedTest
-	@CsvSource("Diary,,,")
+	@CsvSource({
+		",,,",
+		"Diary,Milk,,",
+		"Diary,Milk,1000,3000"})
 	void testSearch(String cName,String pName,Integer sPrice,Integer ePrice) {
 		var list = repo.search(cName, pName, sPrice, ePrice);
-		System.out.println(list);
+		list.forEach(p ->System.out.println(
+				p.getCategory().getName()+
+				"\t"+ p.getName()+
+				"\t"+p.getDtPrice()));
+		System.out.println("=============================================");
+		
 	}
 }
