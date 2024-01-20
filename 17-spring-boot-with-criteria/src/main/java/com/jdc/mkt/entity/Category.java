@@ -7,29 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Customer {
+@RequiredArgsConstructor
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@NonNull
-	@Column(nullable = false,length = 45)
+	@Column(nullable = false,length = 45,unique = true)
 	private String name;
-	@Column(nullable = false,unique = true,length = 12)
-	private String phone;
-	private String email;
 	@ColumnDefault("true")
 	private Boolean active;
-	@ManyToOne
-	private Address address;
 }
