@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import com.jdc.mkt.entity.Address;
 import com.jdc.mkt.entity.Address_;
 import com.jdc.mkt.entity.Address_test;
+import com.jdc.mkt.entity.Customer;
+import com.jdc.mkt.entity.Customer_;
 import com.jdc.mkt.repo.AddressRepo;
 
 import jakarta.persistence.EntityManager;
@@ -22,6 +24,26 @@ public class AddressService {
 	
 	@PersistenceContext
 	EntityManager em;
+	
+	/*
+	 * select a from Address a where a.id in
+     * (select c.address.id from Customer c where lower(c.name) = lower(?1))
+	 */
+	public List<Address> selectAddressWithJpqlQuery(String name){
+		return repo.selectAddressByCustomerName(name);
+	}
+	
+	public List<Address> selectAddressWithSpec(String name){
+		Specification<Address> spec = (root,query,cb) -> {
+			var sub = query.subquery(String.class);
+			var customer = sub.from(Customer.class);
+			var selector = customer.get(Customer_.address).get(Address_.city);
+			sub.select(selector);
+			sub.where(cb.equal(cb.lower(customer.get(Customer_.name)), name.toLowerCase()));
+			return root.get(Address_.city).in(sub);
+		};
+		return repo.findAll(spec);
+	}
 	
 	//select a from Address a where a.city = :city and a.township = :township
 		public List<Address> findByTownshipAndCityStaticWay(String township,String city){

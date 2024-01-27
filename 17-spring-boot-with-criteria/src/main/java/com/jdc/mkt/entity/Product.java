@@ -29,4 +29,9 @@ public class Product {
 	private Boolean active;
 	@ManyToOne
 	private Category category;
+	
+	@Override
+	public String toString() {
+		return name;
+	}
 }

@@ -1,5 +1,7 @@
 package com.jdc.mkt.entity;
 
+import java.util.List;
+
 import org.hibernate.annotations.ColumnDefault;
 
 import jakarta.persistence.Column;
@@ -7,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -28,4 +31,6 @@ public class Category {
 	private String name;
 	@ColumnDefault("true")
 	private Boolean active;
+	@OneToMany(mappedBy = "category")
+	private List<Product> products;
 }

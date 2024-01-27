@@ -6,6 +6,8 @@ insert into address(street,township,city) values('41st,Between 75x76 sts ','Maha
 
 insert into customer (name,address_id,phone,email) values ('mahar swe',1,'02-57494','maharswe@gmail.com');
 insert into customer (name,address_id,phone,email) values ('Andrew',2,'02-522494','andrewnyar@gmail.com');
+insert into customer (name,address_id,phone,email) values ('Andrew',3,'02-93322494','andrewnyar@gmail.com');
+
 insert into customer (name,address_id,phone,email) values ('Sophia',2,'02-7694','sophia@gmail.com');
 insert into customer (name,address_id,phone,email) values ('William',2,'01-234343','William@gmail.com');
 insert into customer (name,address_id,phone,email) values ('John',2,'01-993423333','John@gmail.com');

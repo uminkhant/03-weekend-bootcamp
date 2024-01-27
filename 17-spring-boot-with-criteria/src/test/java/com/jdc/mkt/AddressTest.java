@@ -14,6 +14,18 @@ public class AddressTest {
 	AddressService service;
 	
 	@Test
+	@Disabled
+	void findAddressByCustomerName() {
+		var list = service.selectAddressWithJpqlQuery("andrew");
+		list.forEach(a -> System.out.println(a.getStreet()));
+	}
+	@Test
+	void findAddressByCustomerNameWithSpec() {
+		var list = service.selectAddressWithSpec("andrew");
+		list.forEach(a -> System.out.println(a.getStreet()));
+	}
+	@Test
+	@Disabled
 	void findAddressByTownshipAndCity() {
 		var list = service.findByTownshipAndCityStaticWay("Maharaungmyay", "Mandalay");
 		System.out.println(list);
