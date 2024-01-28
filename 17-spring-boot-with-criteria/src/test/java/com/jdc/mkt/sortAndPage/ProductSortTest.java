@@ -1,24 +1,30 @@
 package com.jdc.mkt.sortAndPage;
 
-import javax.swing.SortOrder;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Sort;
 
+import com.jdc.mkt.dto.ProductDto;
 import com.jdc.mkt.entity.Product;
-import com.jdc.mkt.service.sortAndPaging.ProductService;
+import com.jdc.mkt.service.sort.ProductService;
 
 @SpringBootTest
-public class ProductTest {
+public class ProductSortTest {
 	
 	@Autowired
 	ProductService service;
 	
 	@Test
-	//@Disabled
+	void testselectProductWtihProjectAndSort() {
+		var typeSort = Sort.sort(ProductDto.class);
+		var list = service.selectProductByDtPrice(1000, typeSort.by(ProductDto::getDtPrice).ascending());
+		list.forEach(p -> System.out.println(p.getName()+"\t"+p.getDtPrice()));
+	}
+	
+	@Test
+	@Disabled
 	void testSelectProductWithSpecAndTypeSort() {
 		var typeSort = Sort.sort(Product.class);
 		var list = service.

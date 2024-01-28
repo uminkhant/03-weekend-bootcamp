@@ -1,4 +1,4 @@
-package com.jdc.mkt.service.sortAndPaging;
+package com.jdc.mkt.service.sort;
 
 import java.util.List;
 
@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import com.jdc.mkt.dto.ProductDto;
 import com.jdc.mkt.entity.Category_;
 import com.jdc.mkt.entity.Product;
 import com.jdc.mkt.entity.Product_;
@@ -17,6 +18,17 @@ public class ProductService {
 
 	@Autowired
 	ProductRepo repo;
+	
+	public List<ProductDto> selectProductByDtPrice(int price,Sort sort){
+		Specification<Product> spec = (root,query,cb) -> 
+			cb.greaterThanOrEqualTo(root.get(Product_.dtPrice), price);
+		return repo.findBy(spec, 
+				q -> 
+				q.project("name","dtPrice","category")
+				.as(ProductDto.class)
+				.sortBy(sort)
+				.all());
+	}
 	
 	public List<Product> selectProductByCatgoryNameWithSpec(String category,Sort sort){
 		Specification<Product> spec = 
