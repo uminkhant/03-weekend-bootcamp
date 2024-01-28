@@ -14,6 +14,13 @@ public class CustomerTest {
 	CustomerService service;
 	
 	@Test
+	void testSearch() {
+		var list = service.search("Aungmyaytharzan");
+		list.forEach(c -> System.out.println(c.getName()));
+	}
+	
+	@Test
+	@Disabled
 	void testFindCustomerByNameAndEmail() {
 		var list = service.findCustomerByNameAndEmail("Sophia", "sopha@gmail.com");
 		System.out.println(list);

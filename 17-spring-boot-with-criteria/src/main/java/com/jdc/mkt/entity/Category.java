@@ -31,6 +31,6 @@ public class Category {
 	private String name;
 	@ColumnDefault("true")
 	private Boolean active;
-	@OneToMany(mappedBy = "category")
+	@OneToMany(mappedBy = "category",orphanRemoval = true)
 	private List<Product> products;
 }

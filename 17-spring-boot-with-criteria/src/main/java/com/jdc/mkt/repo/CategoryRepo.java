@@ -15,4 +15,6 @@ public interface CategoryRepo extends JpaRepositoryImplementation<Category, Inte
 			""" )
 	List<Category> selectCategoryByProductNameLike(String name);
 	
+	void deleteById(Integer id);
+	
 }
